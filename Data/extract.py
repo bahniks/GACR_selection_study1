@@ -53,7 +53,7 @@ columns = {"Login": ("id", "BDM1", "BDM2", "condition"),
            "Lottery": ("id", "choice1", "choice2", "choice3", "choice4", "choice5", "chosen", "win"),
            "Dice Lottery": ("id", "rolls", "reward"),
            "Hexaco": ("id", "number", "answer", "item"),           
-           "Attention checks": ("id", "part", "failed"),
+           "Attention checks": ("id", "part", "correct"),
            "Prosociality": ("id", "item", "answer"),
            "Demographics": ("id", "sex", "age", "language", "student", "field"),
            "Ending": ("id", "reward", "chosen_block"),
@@ -139,7 +139,7 @@ for file in files:
                 with open("{} results.txt".format(study), mode = "a") as results:
                     for line in datafile:
                         content = line.strip()
-                        if not content:
+                        if not content or content.startswith("time: "):
                             break
                         else:
                             results.write("\n" + content)
